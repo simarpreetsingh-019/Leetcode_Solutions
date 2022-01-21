@@ -9,59 +9,60 @@
  * }
  */
 class Solution {
-    public ListNode midNode(ListNode head)
-    {
+    public static ListNode midNode(ListNode head) {
         if (head == null || head.next == null)
             return head;
-        
-        ListNode fast = head, slow = head;
-        while(fast.next != null && fast.next.next!=null)
-        {
-            fast = fast.next.next;
+
+        ListNode slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
             slow = slow.next;
+            fast = fast.next.next;
         }
+
         return slow;
     }
-    
-    public ListNode reverse(ListNode head)
-    {
+
+    public static ListNode reverse(ListNode head) {
         if (head == null || head.next == null)
             return head;
-        
-        ListNode curr = head,
-                 prev = null,
-                 next = null;
-        while(curr != null)
-        {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+
+        ListNode curr = head;
+        ListNode prev = null;
+
+        while (curr != null) {
+            ListNode forw = curr.next; // backup
+
+            curr.next = prev; // link
+
+            prev = curr; // move
+            curr = forw;
         }
+
         return prev;
     }
-    public void reorderList(ListNode head)
-    {
-        ListNode mid = midNode(head);
-        ListNode next_to_mid = mid.next;
-        mid.next = null;
-        ListNode p2 = reverse(next_to_mid);
+    
+    public void reorderList(ListNode head) {
         
-        ListNode p1 = head,
-                 p1Next,p2Next;
+        ListNode mid=midNode(head);
+        ListNode nhead=mid.next;
+        mid.next=null;
+        nhead=reverse(nhead);
         
-        while(p2 != null)
-        {
-            p1Next = p1.next;
-            p2Next = p2.next;
+        ListNode c1=head;
+        ListNode c2=nhead;
+        
+        while(c2!=null){
             
-            p1.next = p2;
-            p2.next = p1Next;
+            ListNode f1=c1.next;
+            ListNode f2=c2.next;
             
-            p1 = p1Next;
-            p2 = p2Next;
+            c1.next=c2;
+            c2.next=f1;
+            
+            c1=f1;
+            c2=f2;      
         }
-            
+        
         
     }
 }

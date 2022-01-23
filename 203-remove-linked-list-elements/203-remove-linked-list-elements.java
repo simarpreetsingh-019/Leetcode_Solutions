@@ -9,25 +9,22 @@
  * }
  */
 class Solution {
-    public ListNode removeElements(ListNode head, int val) {
-       
-        ListNode temp  = head;
-    while(temp!=null)
-    {
-        if(temp.val==val)           // moving head and temp if first node contains value we want to delete
-        {
-            temp=temp.next;
-            head=temp;
-        }
-        else if(temp.next!=null && temp.next.val==val)     
-        {
-            temp.next=temp.next.next;
-        }
+       void compute(ListNode node, int val){
+        if(node == null || node.next == null)
+            return;
+        if(node.next.val == val)
+            node.next = node.next.next;
         else
-        {
-            temp=temp.next;
-        }
+            node = node.next;
+        compute(node, val);
     }
-    return head;
-}
+    
+    public ListNode removeElements(ListNode head, int val) {
+        // Dummy node with garbage value pointing to head,
+        // to match the head value
+        ListNode node = new ListNode(0, head);
+        
+        compute(node, val);
+        return node.next;
+    }
 }

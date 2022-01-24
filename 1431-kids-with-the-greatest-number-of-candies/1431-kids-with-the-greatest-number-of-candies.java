@@ -7,10 +7,17 @@ class Solution {
             maxi = Math.max(maxi,candies[i]);
         }
         
-        for(int i : candies)
+        int n=0;
+        for(int i = 0; i < candies.length; i++)
         {
-            ans.add(i >= maxi - extraCandies);
-        }
+            n = candies[i] + extraCandies;
+            if(n < maxi){
+                ans.add(false);
+            }
+            else{
+                ans.add(true);
+          }
+    }
         return ans;
     }
 }

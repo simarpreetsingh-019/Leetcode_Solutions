@@ -9,7 +9,7 @@ class Solution {
         
         for(int i : candies)
         {
-            ans.add(i >= (maxi - extraCandies));
+            ans.add(i >= maxi - extraCandies);
         }
         return ans;
     }

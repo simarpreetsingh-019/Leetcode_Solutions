@@ -7,9 +7,9 @@ class Solution {
             maxi = Math.max(maxi,candies[i]);
         }
         
-        for(int i = 0; i<candies.length;i++)
+        for(int i : candies)
         {
-            ans.add(candies[i] >= maxi - extraCandies);
+            ans.add(i >= (maxi - extraCandies));
         }
         return ans;
     }

@@ -1,16 +1,21 @@
 class Solution {
- public boolean checkIfPangram(String sentence) {
-boolean flag=false;
-HashSet hs=new HashSet<>();
-for(int i=0;i<sentence.length();i++){
-hs.add(sentence.charAt(i));
-}
-if(hs.size()==26){
-flag=true;
-}
-else{
-flag=false;
-}
-return flag;
-}
+    public boolean checkIfPangram(String sentence) {
+        char[] ans;
+        ans = sentence.toCharArray();
+        for (char i = 'a'; i <='z' ; i++) {
+                if(!(check(i,ans))){
+                    return false;
+                }
+        }
+        return true;
+    }
+    
+    public boolean check(char a,char [] q){
+        for (char j : q) {
+            if (a == j) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -4,7 +4,7 @@ class Solution {
         int curr = 0;
         for(int i = 0; i< gain.length;i++)
         {
-            curr = curr + gain[i];
+            curr +=gain[i];
             max = Math.max(max, curr);
         }
         return max;

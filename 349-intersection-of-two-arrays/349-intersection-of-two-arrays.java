@@ -6,7 +6,7 @@ class Solution {
             freq[x]++;
         }
         
-        List<Integer> list=new ArrayList<>();
+        ArrayList<Integer> list=new ArrayList<>();
         for(int x: nums2){
             if(freq[x] >0){
                 list.add(x);

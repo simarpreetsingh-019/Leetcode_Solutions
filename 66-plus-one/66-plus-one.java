@@ -1,23 +1,23 @@
-class Solution {    
+class Solution {
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i > -1; i--) {
-            if (digits[i] != 9) {
-                digits[i] += 1;
-                return digits;
-            } else if (digits[i] == 9 && i == 0) {
-                int[] newDigits = new int[digits.length + 1];
-                newDigits[0] = 1;
-                return newDigits;
-            } else if (digits[i] == 9) {
-                if (digits[i - 1] != 9) {
-                    digits[i] = 0;
-                    digits[i - 1] += 1;
-                    return digits;
-                } else if (digits[i - 1] == 9) {
-                    digits[i] = 0;
-                }
-            }
+        int index = digits.length-1;
+        int carry = 1;
+    while(index>=0){
+            int sum = digits[index] + carry;
+            digits[index] = sum % 10;
+            carry = sum / 10;
+            index--;
         }
-        return digits;
+        
+        if(carry==0){
+            return digits;
+        } else {
+            int[] results = new int[digits.length+1];
+            results[0] = carry;
+            for(int i=1; i<results.length; i++){
+                results[i] = digits[i-1];
+            }
+            return results;
+        }
     }
 }

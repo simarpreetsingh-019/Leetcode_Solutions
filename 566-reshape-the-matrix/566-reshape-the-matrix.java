@@ -1,23 +1,26 @@
 class Solution {
     public int[][] matrixReshape(int[][] mat, int r, int c) {
-        int n=mat.length;
-        int m=mat[0].length;
-        if(n*m!=r*c){
+        
+        if((mat.length==r && mat[0].length==c) ||(mat.length*mat[0].length!=r*c)){
             return mat;
         }
-        int[][] newmatrix=new int[r][c];
-        int sr=0;
-        int sc=0;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-            newmatrix[sr][sc]=mat[i][j];
-                 sc++;
-                if(sc==c){
-                    sr++;
-                    sc=0;
-                }           
+        
+        //Transform function
+        int[][] matX=new int[r][c];
+        int x=0;//row 
+        int y=0;//col
+        
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                matX[x][y]=mat[i][j];
+                if(y==c-1){
+                    y=-1;
+                    x++;
+                }
+                y++; 
             }
         }
-        return newmatrix;
+        
+        return matX;
     }
 }

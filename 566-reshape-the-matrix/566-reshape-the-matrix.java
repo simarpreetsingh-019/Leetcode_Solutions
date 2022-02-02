@@ -1,24 +1,27 @@
 class Solution {
    public int[][] matrixReshape(int[][] mat, int r, int c) {
-        int row = mat.length;
-        int col = mat[0].length;
-        int[][] ans = new int[r][c];
-        if(r*c != row*col) {
+		int  m = mat.length, n = mat[0].length, elements = m*n;
+		
+		if(r*c != elements)
             return mat;
-        } else {  
-            int colp = 0;
-            int rowp = 0;
-            for(int i = 0; i < row; i++) {
-                for(int j = 0; j < col; j++) {
-                    ans[rowp][colp] = mat[i][j];
-                    colp++;
-                    if(colp == c) {
-                        colp = 0;
-                        rowp++;
-                    }
-                }
+			
+        int [][] result = new int[r][c];
+        int i = 0, j = 0, a = 0, b = 0, k = 0;
+
+        while(k < elements){
+            result[a][b] = mat[i][j];
+            j++;
+            b++;
+            if(j == n){
+                j = 0;
+                i++;
             }
+            if(b == c){
+                b = 0;
+                a++;
+            }
+            k++;
         }
-        return ans;
+        return result;
     }
 }

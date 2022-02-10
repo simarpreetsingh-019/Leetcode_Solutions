@@ -4,14 +4,14 @@ class Solution {
         {
             return true;
         }
-        Set<Integer> set = new HashSet<>();
-        for(int i = 0; i < nums.length; i++){
-            if(!set.add(nums[i])){
+        final Set<Integer> distinct = new HashSet<Integer>();
+        for(int num : nums) {
+            if(distinct.contains(num)) {
                 return true;
             }
+            distinct.add(num);
         }
         return false;
-        
     }
         
         // Method 1 : Sorting array

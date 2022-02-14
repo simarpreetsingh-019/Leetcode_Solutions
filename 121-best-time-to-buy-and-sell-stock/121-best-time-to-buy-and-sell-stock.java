@@ -14,7 +14,7 @@
 
 
 // Method 2:
-// class Solution {
+class Solution {
     // public int maxProfit(int[] prices) {
     //     int ans=0;
     //     if(prices.length==0){
@@ -33,37 +33,19 @@
     //     }
     //     return ans;
     // }
-//     public int maxProfit(int[] prices) {
-//         int res = 0;
+    public int maxProfit(int[] prices) {
+        int res = 0;
         
-//         int lowest = prices[0];
+        int lowest = prices[0];
         
-//         for (int j = 1; j < prices.length; j++) {
-//             if (prices[j] < lowest) {
-//                 lowest = prices[j];
-//             } else {
-//                 res = Math.max(res, prices[j] - lowest);
-//             }
-//         }
-        
-//         return res;
-//     }
-// }
-    
-    class Solution 
-{
-    public int maxProfit(int[] arr) 
-    {
-        int profit=0;
-        int curr=arr[0];
-        for(int i=0;i<arr.length;i++)
-        {
-            if(curr>arr[i])
-            {
-                curr=arr[i];
+        for (int j = 1; j < prices.length; j++) {
+            if (prices[j] < lowest) {
+                lowest = prices[j];
+            } else {
+                res = Math.max(res, prices[j] - lowest);
             }
-            profit=Math.max(profit,arr[i]-curr);
         }
-        return profit;
+        
+        return res;
     }
 }

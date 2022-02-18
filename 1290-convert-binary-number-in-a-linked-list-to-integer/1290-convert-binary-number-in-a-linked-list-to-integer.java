@@ -9,19 +9,12 @@
  * }
  */
 class Solution {
-    public int getDecimalValue(ListNode head) {
-        if(head==null)return -1;
-        ListNode newNode=head;
-        int count=0;
-        int ans=0;
-        while(newNode.next!=null){
-            newNode=newNode.next;
-            count++;
-        }
-        for(int i=count;i>=0;i--){
-            ans+=head.val*(Math.pow(2,i));
+    public int getDecimalValue(ListNode head) {     
+        int ans = 0;
+        while(head!=null){
+            ans=(ans*2) + head.val; // ans=(ans<<1) + head.val;
             head=head.next;
-        }
-        return ans;
+        }                
+        return ans;        
     }
 }

@@ -14,12 +14,11 @@ class Solution {
             return head;
         
         ListNode curr = head;
-        ListNode prev = null,
-                 forw = null;
+        ListNode prev = null;
         
         while(curr != null)
         {
-            forw = curr.next;
+            ListNode forw = curr.next;
             curr.next = prev;
             prev = curr;
             curr = forw;

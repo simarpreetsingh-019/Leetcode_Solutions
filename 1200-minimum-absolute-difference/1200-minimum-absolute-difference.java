@@ -1,17 +1,28 @@
 class Solution {
-    public List<List<Integer>> minimumAbsDifference(final int[] arr) {
-        Arrays.sort(arr);
-        final List<List<Integer>> result = new LinkedList<>();
-        int minDistance = Integer.MAX_VALUE;
-        for (int i=1; i<arr.length; i++) {
-            minDistance = Math.min(minDistance, arr[i] - arr[i-1]);
-        }
-        for (int i=1; i<arr.length; i++) {
-            if (minDistance == arr[i] - arr[i - 1]) {
-                result.add(Arrays.asList(arr[i-1], arr[i]));
-            }
-        }
-        return result;
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+     Arrays.sort(arr);
+     int min=Integer.MAX_VALUE;
+     for(int i=1;i<arr.length;i++)
+     {
+         min=Math.min(min,arr[i]-arr[i-1]);
+     }
+     int i=0;
+     List<List<Integer>> res=new ArrayList<>();
+     for(int j=1;j<arr.length;j++)
+     {
+      while(i!=j&&arr[j]-arr[i]>min)
+      {
+          i++;
+      }
+      if(arr[j]-arr[i]==min)
+          {
+            ArrayList<Integer> al=new ArrayList<>();
+            al.add(arr[i]);
+            al.add(arr[j]);
+            res.add(al);
+          }      
+      }
+     return res;
     }
 }
 // class Solution {

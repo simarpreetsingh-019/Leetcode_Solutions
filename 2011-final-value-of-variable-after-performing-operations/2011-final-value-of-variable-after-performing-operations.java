@@ -1,11 +1,10 @@
 class Solution {
     public int finalValueAfterOperations(String[] operations) {
-        int res = 0;
-        
-        for(int i = 0;i< operations.length;i++)
-            if(operations[i].charAt(1) == '+')res++;
-            else res--;
-        
-        return res;
+        int X=0;
+        for(String i : operations){
+            if(i.equals("++X") || i.equals("X++")) X++; // might give wrong ans with i=="++X", so use '.equals'
+            else X--;
+        }
+        return X;
     }
 }

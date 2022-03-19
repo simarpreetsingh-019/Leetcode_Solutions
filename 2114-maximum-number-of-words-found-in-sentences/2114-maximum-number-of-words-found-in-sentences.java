@@ -1,9 +1,8 @@
 class Solution {
     public int mostWordsFound(String[] sentences) {
-        int max = -1;
-        for (String s : sentences) {
-            int t=s.split(" ").length;
-            if (t>max)max=t;
+        int max = Integer.MIN_VALUE;
+        for (String sentence : sentences) {
+            max = Math.max(max, sentence.split(" ").length);
         }
         return max;
     }

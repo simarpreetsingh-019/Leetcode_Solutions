@@ -1,12 +1,15 @@
 class Solution {
     public int maxArea(int[] height) {
-        int left = 0, right = height.length - 1, maxArea = 0;
-
-        while (left < right) {
-            maxArea = Math.max(maxArea, Math.min(height[left], height[right]) * (right - left));
-            if (height[left] < height[right]) left++;
-            else right--;
+        int max=Integer.MIN_VALUE;
+        int i=0;
+        int j=height.length-1;
+        
+        while(i<j){
+            int min=Math.min(height[i],height[j]); //we will find the min of both height because that is the water level
+            max=Math.max(max,min*(j-i)); //finding the amount of water 
+            if(height[i]<height[j]) i++; //if ith is smaller then increase i
+            else j--; // if jth is smalller then decrease j
         }
-        return maxArea;
+        return max;   
     }
 }

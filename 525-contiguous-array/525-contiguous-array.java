@@ -1,3 +1,6 @@
+// reference for undwerstanding this problem
+// https://leetcode.com/problems/contiguous-array/discuss/1743431/A-highly-detailed-EXPLANATION-ever-exists-JavaC%2B%2B
+
 class Solution {
     public int findMaxLength(int[] nums) {
         if (nums == null || nums.length == 0) { // Base Case

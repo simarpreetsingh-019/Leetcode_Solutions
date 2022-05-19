@@ -1,16 +1,17 @@
 class Solution {
-    public int findMaxLength(int[] arr) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        // right - left = 0 -> left = right. Since left = right, let's name it sum
-        int ans = 0, sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i] == 0 ? -1 : 1;
-            if (map.containsKey(sum)) {
-                ans = Math.max(ans, i - map.get(sum));
+    public int findMaxLength(int[] nums) {
+       int Sum = 0, max = 0;
+       HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<nums.length; i++) {
+            Sum += nums[i]== 0 ? -1 : 1;
+            if(Sum == 0) {
+                max = i+1;
+            } else if(map.containsKey(Sum)) {
+                max = Math.max(max, i-map.get(Sum));
+            } else {
+                map.put(Sum, i);
             }
-            map.putIfAbsent(sum, i);
         }
-        return ans;
+        return max;
     }
 }

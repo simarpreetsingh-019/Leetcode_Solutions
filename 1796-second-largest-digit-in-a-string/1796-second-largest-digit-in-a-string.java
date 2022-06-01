@@ -1,19 +1,22 @@
 class Solution {
-    public int secondHighest(String s) {
-        int max = -1, secMax = -1;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i); 
-            if (Character.isDigit(c)) {
-                int curMax = c - '0';
-                if (max < curMax) {
-                    secMax = max;
-                    max = curMax;
+    public int secondHighest(String s) 
+    {
+        int largest = -1;
+        int second = largest;
+        for(char c:s.toCharArray())
+        {
+            int i = Character.getNumericValue(c);
+            if(i>=0 && i<=9)
+            {
+                if(i>largest)
+                {
+                    second = largest;
+                    largest = i;
                 }
-                else if (secMax < curMax && curMax < max) {
-                    secMax = curMax;
-                }
+                else if(i<largest && i>second)
+                    second = i;
             }
         }
-        return secMax;
+        return second;
     }
 }

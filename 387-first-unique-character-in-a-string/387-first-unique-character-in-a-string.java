@@ -1,18 +1,12 @@
 class Solution {
     public int firstUniqChar(String s) {
-        if(s.length() == 0){
-            return -1;
-        }
-        Map<Character, Integer> res = new HashMap<>();
-        for(char ch : s.toCharArray()){
-            res.put(ch, res.getOrDefault(ch, 0) + 1);
-        }
-        for(char ch: s.toCharArray()){
-            if(res.get(ch) == 1){
-                return s.indexOf(ch);
-            }
+        int res = s.length();
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            int index = s.indexOf(ch);
+            if (index != -1 && index == s.lastIndexOf(ch))
+                res = Math.min(res, index);
         }
         
-        return -1;
+        return res == s.length() ? -1 : res;
     }
 }
